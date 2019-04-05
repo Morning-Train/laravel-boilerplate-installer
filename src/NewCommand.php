@@ -63,6 +63,7 @@ class NewCommand extends Command
 
         $commands = [
             $composer.' install --no-scripts',
+            $this->requireAdditionalDependencies($composer),
             $composer.' run-script post-root-package-install',
             $composer.' run-script post-create-project-cmd',
             $composer.' run-script post-autoload-dump',
@@ -226,5 +227,21 @@ class NewCommand extends Command
         }
 
         return 'composer';
+    }
+
+    protected function requireAdditionalDependencies($composer)
+    {
+        $dependencies = [
+            'morningtrain/laravel-react',
+            'morningtrain/laravel-https',
+            'morningtrain/laravel-fields',
+            'morningtrain/laravel-filters',
+            'morningtrain/laravel-context',
+            'morningtrain/laravel-support',
+            'morningtrain/laravel-resources',
+            'morningtrain/laravel-permissions',
+        ];
+
+        return $composer . ' require ' . implode(' ', $dependencies);
     }
 }
