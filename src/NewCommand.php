@@ -67,6 +67,7 @@ class NewCommand extends Command
             $composer.' run-script post-root-package-install',
             $composer.' run-script post-create-project-cmd',
             $composer.' run-script post-autoload-dump',
+            $this->postInstall($composer),
         ];
 
         if ($input->getOption('no-ansi')) {
@@ -232,6 +233,7 @@ class NewCommand extends Command
     protected function requireAdditionalDependencies($composer)
     {
         $dependencies = [
+            'laravel/passport',
             'morningtrain/laravel-react',
             'morningtrain/laravel-https',
             'morningtrain/laravel-fields',
@@ -243,5 +245,14 @@ class NewCommand extends Command
         ];
 
         return $composer . ' require ' . implode(' ', $dependencies);
+    }
+
+    protected function postInstall($composer)
+    {
+        return [
+            'php artisan vendor:publish --tag=mt-config',
+            'php artisan preset none',
+            'npm install --save-dev',
+        ];
     }
 }
