@@ -1,12 +1,17 @@
 {
     "name": "laravel/installer",
-    "description": "Laravel application installer.",
+    "description": "Laravel Boilerplate application installer.",
     "keywords": ["laravel"],
     "license": "MIT",
     "authors": [
         {
             "name": "Taylor Otwell",
             "email": "taylorotwell@gmail.com"
+        },
+        {
+            "name": "Morningtrain",
+            "email": "mail@morningtrain.dk",
+            "homepage": "https://morningtrain.dk/"
         }
     ],
     "autoload": {
