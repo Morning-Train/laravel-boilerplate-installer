@@ -67,7 +67,7 @@ class NewCommand extends Command
             $composer.' run-script post-root-package-install',
             $composer.' run-script post-create-project-cmd',
             $composer.' run-script post-autoload-dump',
-            $this->postInstall($composer),
+            //$this->postInstall($composer),
         ];
 
         if ($input->getOption('no-ansi')) {
@@ -251,8 +251,8 @@ class NewCommand extends Command
     {
         return [
             'php artisan vendor:publish --tag=mt-config',
-            'php artisan preset none',
-            'npm install --save-dev',
+            'php artisan preset mt-react',
+            'npm install',
         ];
     }
 }
